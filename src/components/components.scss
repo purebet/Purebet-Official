@@ -58,7 +58,7 @@
     background: linear-gradient(180deg, rgba(85, 221, 224, 0.5) 23.96%, rgba(242, 135, 5, 0.5) 100%);
     box-shadow: 15px 15px 15px rgba(242, 135, 5, 0.25);
     min-width: fit-content;
-    width: 20em;
+    width: 80vw;
     padding: 2em 3em;
 }
 .bet-event h4{
@@ -81,6 +81,7 @@
     padding: .5em 1em;
     margin: 1em 0em;
     text-align: center;
+    cursor: pointer;
 }
 
 .open-bet-details{
@@ -124,17 +125,11 @@
     min-height: fit-content;
 }
 .open-bet-details{
-    .home-team{
-        transform: rotate(-90deg); 
-    }
     .h-odds, .odds-bet-amt{
         margin: 0;
     }
     .vs{
         align-self: center;
-    }
-    .away-team{
-        transform: rotate(90deg);
     }
     .highest-odds-home{
         background-color: #009DB2;
@@ -149,4 +144,39 @@
     width: fit-content;
     padding: 1em 2em;
     cursor: pointer;
+}
+
+.betslip-wrapper{
+    position: fixed;
+    width: 100vw;  
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: .5);
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+.betslip-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: linear-gradient(104.46deg, #012E40 0%, #1C342E 45.83%, #A75C00 100%);
+    box-shadow: 15px 15px 15px rgba(242, 135, 5, 0.25);
+    width: fit-content;
+    padding: 3em 6em;
+    visibility: hidden;
+}
+.betslip-closed{
+    visibility: visible;
+}
+.betslip-container{
+    input{
+        font-size: 3ch;
+        background-color: transparent;
+        border: 2px solid #55DDE0;
+        padding: .5em 1em;        
+    }
+    button{
+        width: 100%;
+    }
 }

@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../pages/index.scss";
 
-const AvailableBets = () => {
+const AvailableBets = ({
+  setBetData,
+  setBetSlipOpen,
+  setChangedOdds,
+  setChangedStake,
+}) => {
   const [avaiOdds, setAvaiOdds] = useState([]);
-  const [betOpen, setBetOpen] = useState();
+  // const [betOpen, setBetOpen] = useState();
   const avaiBets = async () => {
     try {
       const res = await axios.get("https://usdcavailable.mbdqwfss.repl.co");
@@ -17,19 +22,6 @@ const AvailableBets = () => {
   useEffect(() => {
     avaiBets();
   }, []);
-
-  const betDetails = (id) => {
-    const ele = document.getElementById(id);
-    // classList = "classList" in ele;
-    ele.classList.add("open-bet-details");
-    const hidBlock = ele.getElementsByClassName("nhb");
-    console.log(hidBlock.length);
-    for (let i = 0; i <= hidBlock.length - 1; i++) {
-      hidBlock[i].classList.remove("h-block");
-    }
-    console.log(hidBlock[0]);
-    setBetOpen((prev) => !prev);
-  };
 
   const handleBets = async () => {
     try {
@@ -51,106 +43,139 @@ const AvailableBets = () => {
     }
   };
 
+  const getBetData = (id, ha, od, st) => {
+    setBetData([id, ha, od, st]);
+    setBetSlipOpen(true);
+    setChangedOdds(od);
+    setChangedStake(st);
+    console.log(id, ha, od, st);
+  };
+
   return (
     <div className="betting-events-wrapper">
       <h3 className="serif-600 sect-title">Upcoming Events.</h3>
       <div className="bet-events">
-        {avaiOdds.map((item, index) => {
+        {avaiOdds.slice(0, 4).map((item, index) => {
           return (
-            <div
-              className="bet-event"
-              key={index}
-              id={index}
-              onClick={() => betDetails(index)}
-              betOpen
-            >
-              <h4 className="serif-600 team-name home-team">RealMadrid</h4>
-              <div>
-                <div className="h-odds-block home-block">
-                  <div className="h-odds sans highest-odds-home">
-                    {item.home[0].odds}
+            <div className="event-wrapper" key={index} id={index}>
+              <h4 className="serif-600">{item.event}.</h4>
+              <h5 className="serif-400">{item.date}.</h5>
+              <div className="bet-event open-bet-details">
+                <div>
+                  <h4 className="serif-600 team-name home-team">
+                    {item.homeTeam}
+                  </h4>
+                  <div
+                    className="h-odds-block home-block"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        0,
+                        item.home[0].odds,
+                        item.home[0].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans highest-odds-home">
+                      {item.home[0].odds}
+                    </div>
+                    <div className="odds-bet-amt sans highest-odds-home">
+                      {item.home[0].totalAmount} USDC
+                    </div>
                   </div>
-                  <div className="odds-bet-amt sans highest-odds-home">
-                    {item.home[0].totalAmount} SOL
+                  <div
+                    className="h-odds-block home-block nhb"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        0,
+                        item.home[1].odds,
+                        item.home[1].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans">{item.home[1].odds}</div>
+                    <div className="odds-bet-amt sans">
+                      {item.home[1].totalAmount} USDC
+                    </div>
+                  </div>
+                  <div
+                    className="h-odds-block home-block nhb"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        0,
+                        item.home[2].odds,
+                        item.home[2].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans">{item.home[2].odds}</div>
+                    <div className="odds-bet-amt sans">
+                      {item.home[2].totalAmount} USDC
+                    </div>
                   </div>
                 </div>
-                <div className="h-odds-block home-block h-block nhb">
-                  <div className="h-odds sans">{item.home[1].odds}</div>
-                  <div className="odds-bet-amt sans">
-                    {item.home[1].totalAmount} SOL
+                <h4 className="serif-600 team-name vs">VS</h4>
+                <div>
+                  <h4 className="serif-600 team-name away-team">
+                    {item.awayTeam}
+                  </h4>
+                  <div
+                    className="h-odds-block away-block"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        1,
+                        item.away[0].odds,
+                        item.away[0].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans highest-odds-away">
+                      {item.away[0].odds}
+                    </div>
+                    <div className="odds-bet-amt sans highest-odds-away">
+                      {item.away[0].totalAmount} USDC
+                    </div>
                   </div>
-                </div>
-                <div className="h-odds-block home-block h-block nhb">
-                  <div className="h-odds sans">{item.home[2].odds}</div>
-                  <div className="odds-bet-amt sans">
-                    {item.home[2].totalAmount} SOL
+                  <div
+                    className="h-odds-block away-block nhb"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        1,
+                        item.away[1].odds,
+                        item.away[1].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans">{item.away[1].odds}</div>
+                    <div className="odds-bet-amt sans">
+                      {item.away[1].totalAmount} USDC
+                    </div>
+                  </div>
+                  <div
+                    className="h-odds-block away-block nhb"
+                    onClick={() =>
+                      getBetData(
+                        index,
+                        1,
+                        item.away[2].odds,
+                        item.away[2].totalAmount
+                      )
+                    }
+                  >
+                    <div className="h-odds sans">{item.away[2].odds}</div>
+                    <div className="odds-bet-amt sans">
+                      {item.away[2].totalAmount} USDC
+                    </div>
                   </div>
                 </div>
               </div>
-              <h4 className="serif-600 team-name vs">VS</h4>
-              <div>
-                <div className="h-odds-block away-block">
-                  <div className="h-odds sans highest-odds-away">
-                    {item.away[0].odds}
-                  </div>
-                  <div className="odds-bet-amt sans highest-odds-away">
-                    {item.away[0].totalAmount} SOL
-                  </div>
-                </div>
-                <div className="h-odds-block away-block h-block nhb">
-                  <div className="h-odds sans">{item.away[1].odds}</div>
-                  <div className="odds-bet-amt sans">
-                    {item.away[1].totalAmount} SOL
-                  </div>
-                </div>
-                <div className="h-odds-block away-block h-block nhb">
-                  <div className="h-odds sans">{item.away[2].odds}</div>
-                  <div className="odds-bet-amt sans">
-                    {item.away[2].totalAmount} SOL
-                  </div>
-                </div>
-              </div>
-              <h4 className="serif-600 team-name away-team">Barcelona</h4>
             </div>
           );
         })}
-      </div>
-      {/* <div className="opened-event-wrapper"></div>
-      <div className="bet-event-opened">
-        <h4 className="serif-600 team-name home-team">Real Madrid</h4>
-        <div className="block-container">
-          <div className="h-odds-block home-block">
-            <div className="h-odds sans highest-odds-home">76</div>
-            <div className="odds-bet-amt sans highest-odds-home">7 SOL</div>
-          </div>
-          <div className="h-odds-block home-block">
-            <div className="h-odds sans">76</div>
-            <div className="odds-bet-amt sans">7 SOL</div>
-          </div>
-          <div className="h-odds-block home-block">
-            <div className="h-odds sans">76</div>
-            <div className="odds-bet-amt sans">7 SOL</div>
-          </div>
-        </div>
-        <h4 className="serif-600 team-name vs">VS</h4>
-        <div className="block-container">
-          <div className="h-odds-block away-block">
-            <div className="h-odds sans highest-odds-away">87</div>
-            <div className="odds-bet-amt sans highest-odds-away">9 SOL</div>
-          </div>
-          <div className="h-odds-block away-block">
-            <div className="h-odds sans">87</div>
-            <div className="odds-bet-amt sans">9 SOL</div>
-          </div>
-          <div className="h-odds-block away-block">
-            <div className="h-odds sans">87</div>
-            <div className="odds-bet-amt sans">9 SOL</div>
-          </div>
-        </div>
-        <h4 className="serif-600 team-name away-team">Barcelona</h4>
-      </div> */}
-      <div className="btn sans" onClick={handleBets}>
-        Place Bet
       </div>
     </div>
   );
