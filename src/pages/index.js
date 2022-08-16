@@ -7,10 +7,17 @@ import bgImg from "../images/Ellipse.png";
 import AvailableBets from "../components/AvailableBets";
 import Categories from "../components/Categories";
 import { Link } from "gatsby";
+import { Helmet } from "react-helmet";
 
 const index = () => {
   return (
     <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Purebet</title>
+        <link rel="icon" type="image/x-icon" href=""></link>
+        <link rel="apple-touch-icon" href="/apple-favicon.png" />
+      </Helmet>
       <Nav />
       <img src={bgImg} className="bg-img"></img>
       <div className="landing-page">
