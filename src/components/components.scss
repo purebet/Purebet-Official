@@ -1,3 +1,9 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 3em;
+}
 .cat-sect{
     margin: 1em 6.25em 3.25em 6.25em;
     min-height: 60vh;

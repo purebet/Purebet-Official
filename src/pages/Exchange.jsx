@@ -10,17 +10,20 @@ import BetSlip from "../components/BetSlip";
 const Exchange = () => {
   const [betData, setBetData] = useState([]);
   const [betSlipOpen, setBetSlipOpen] = useState();
+  const [accArrStake, setAccArrStake] = useState([]);
+  const [accArray, setAccArray] = useState([]);
   const oriOdds = betData[2];
   const oriStake = betData[3];
   const [changedOdds, setChangedOdds] = useState(oriOdds);
-  const [changedStake, setChangedStake] = useState(oriStake);
+  const [changedStake, setChangedStake] = useState();
+  const [walletAdd, setWalletAdd] = useState("");
   return (
     <div>
-      <Nav />
+      <Nav setWalletAdd={setWalletAdd} />
       <img src={bgImg} className="bg-img"></img>
       <div className="ex-hero-text serif-800">
         No deposit or <br />
-        payout hassel.
+        payout hassle.
         <br />
         No limit or bans.
         <br />
@@ -33,7 +36,9 @@ const Exchange = () => {
         setBetData={setBetData}
         setBetSlipOpen={setBetSlipOpen}
         setChangedOdds={setChangedOdds}
+        setAccArrStake={setAccArrStake}
         setChangedStake={setChangedStake}
+        setAccArray={setAccArray}
       />
       <BetSlip
         betData={betData}
@@ -43,6 +48,9 @@ const Exchange = () => {
         setChangedStake={setChangedStake}
         changedOdds={changedOdds}
         changedStake={changedStake}
+        walletAdd={walletAdd}
+        accArrStake={accArrStake}
+        accArray={accArray}
       />
     </div>
   );

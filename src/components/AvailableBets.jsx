@@ -7,6 +7,8 @@ const AvailableBets = ({
   setBetSlipOpen,
   setChangedOdds,
   setChangedStake,
+  setAccArrStake,
+  setAccArray,
 }) => {
   const [avaiOdds, setAvaiOdds] = useState([]);
   // const [betOpen, setBetOpen] = useState();
@@ -23,32 +25,27 @@ const AvailableBets = ({
     avaiBets();
   }, []);
 
-  const handleBets = async () => {
-    try {
-      const json = JSON.stringify({
-        odds: "2",
-        originalOdds: "2",
-        stake: "10",
-        originalStake: "10",
-        acc: "CkMWLnaWGUVrQTpLYJ8kwptE6sHd7KMVgtbH51xy6FfR",
-      });
-      const res = await axios.post(
-        "https://usdcbetplacer.mbdqwfss.repl.co?id1=0&id2=1&ha=0&bettor=HAE4RisEb22vDBQs7YwDeF27SUj6PGdvfQiKBqsSwyLV",
-        json
-      );
-      console.log(res);
-      console.log(json);
-    } catch (error) {
-      console.log(error);
+  const getBetData = (id, ha, od, st, objIndx, bac) => {
+    let betAcc;
+    if (ha == 0) {
+      betAcc = avaiOdds[id].home[objIndx].accArr;
+      setChangedStake(avaiOdds[id].home[objIndx].totalAmount);
+    } else {
+      betAcc = avaiOdds[id].away[objIndx].accArr;
+      setChangedStake(avaiOdds[id].away[objIndx].totalAmount);
     }
-  };
-
-  const getBetData = (id, ha, od, st) => {
+    console.log(betAcc);
+    let betStakes = [];
+    let eleAccArr = [];
+    for (let i = 0; i < betAcc.length; i++) {
+      betStakes.push(betAcc[i].amount);
+      eleAccArr.push(betAcc[i].acc);
+    }
+    setAccArray(eleAccArr);
+    setAccArrStake(betStakes);
     setBetData([id, ha, od, st]);
     setBetSlipOpen(true);
     setChangedOdds(od);
-    setChangedStake(st);
-    console.log(id, ha, od, st);
   };
 
   return (
@@ -72,7 +69,8 @@ const AvailableBets = ({
                         index,
                         0,
                         item.home[0].odds,
-                        item.home[0].totalAmount
+                        item.home[0].accArr[0].amount,
+                        0
                       )
                     }
                   >
@@ -90,7 +88,8 @@ const AvailableBets = ({
                         index,
                         0,
                         item.home[1].odds,
-                        item.home[1].totalAmount
+                        item.home[1].accArr[0].amount,
+                        1
                       )
                     }
                   >
@@ -106,7 +105,8 @@ const AvailableBets = ({
                         index,
                         0,
                         item.home[2].odds,
-                        item.home[2].totalAmount
+                        item.home[2].accArr[0].amount,
+                        2
                       )
                     }
                   >
@@ -128,7 +128,8 @@ const AvailableBets = ({
                         index,
                         1,
                         item.away[0].odds,
-                        item.away[0].totalAmount
+                        item.away[0].accArr[0].amount,
+                        0
                       )
                     }
                   >
@@ -146,7 +147,8 @@ const AvailableBets = ({
                         index,
                         1,
                         item.away[1].odds,
-                        item.away[1].totalAmount
+                        item.away[1].accArr[0].amount,
+                        1
                       )
                     }
                   >
@@ -162,7 +164,8 @@ const AvailableBets = ({
                         index,
                         1,
                         item.away[2].odds,
-                        item.away[2].totalAmount
+                        item.away[2].accArr[0].amount,
+                        2
                       )
                     }
                   >

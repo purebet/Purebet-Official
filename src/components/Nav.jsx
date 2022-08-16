@@ -1,7 +1,8 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import WalletBtn from "./WalletBtn.tsx";
 
-const Nav = () => {
+const Nav = ({ setWalletAdd }) => {
   return (
     <div>
       <header>
@@ -9,6 +10,7 @@ const Nav = () => {
           src="../assets/Logo/Group 37.png"
           className="logo"
         ></StaticImage>
+        <WalletBtn setWalletAdd={setWalletAdd} />
       </header>
     </div>
   );
