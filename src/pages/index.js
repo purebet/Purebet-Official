@@ -6,6 +6,7 @@ import "./index.scss";
 import bgImg from "../images/Ellipse.png";
 import AvailableBets from "../components/AvailableBets";
 import Categories from "../components/Categories";
+import { Link } from "gatsby";
 
 const index = () => {
   return (
@@ -20,11 +21,18 @@ const index = () => {
           </h4>
         </div>
         <div className="btn-container">
-          <button className="trans-btn sans">Explor Categories.</button>
-          <button className="cta-btn sans">Launch Exchange.</button>
+          <a
+            href="https://purecrash.mbdqwfss.repl.co/"
+            target="_blank"
+            className="trans-btn sans"
+          >
+            Casino Game.
+          </a>
+          <Link to="/Exchange" className="cta-btn sans">
+            Launch Exchange.
+          </Link>
         </div>
       </div>
-      <Categories />
       <div className="social-text">
         <h3 className="serif-600">
           Want to know more about <span>Purebet?</span>

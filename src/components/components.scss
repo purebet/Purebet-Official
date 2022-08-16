@@ -4,6 +4,17 @@ header{
     align-items: center;
     padding: 0em 3em;
 }
+.right-nav{
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+}
+.nav-ele{
+    font-size: 2.5ch;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .cat-sect{
     margin: 1em 6.25em 3.25em 6.25em;
     min-height: 60vh;
@@ -185,4 +196,8 @@ header{
     button{
         width: 100%;
     }
+}
+
+.wallet-btn{
+    font-size: 2ch;
 }

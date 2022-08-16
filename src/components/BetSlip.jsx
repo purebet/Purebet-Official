@@ -143,7 +143,7 @@ const BetSlip = ({
           <br />
           <br />
           <label htmlFor="total-field" className="serif-400">
-            Total
+            Returns
           </label>
           <br />
           <input

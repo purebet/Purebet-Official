@@ -110,7 +110,7 @@ const WalletBtn = ({ setWalletAdd }) => {
       return (          
           <div
             onClick={disconnectWallet}
-            className="wallet-btn"
+            className="wallet-btn btn sans"
           >
             Disconnect from Phantom
           </div>
@@ -119,28 +119,16 @@ const WalletBtn = ({ setWalletAdd }) => {
 
     return (
       <div>
-        {/* <div className={`popup-wrap ${isPopupActive && "popup-open"}`} onClick={togglePopup}>
-        <div className="wallet-popup">
-        <p>Change the network of the Phantom wallet to Testnet <br />
-          <span>Settings - Network - Testnet</span></p>
-          <div
-        onClick={connectWallet}
-        className="wallet-btn btn"
-      >
-          Connect to Phantom
-        </div>
-      </div>
-        </div> */}
       <div
       onClick={connectWallet}
-        className="wallet-btn btn"
+        className="wallet-btn btn sans"
       >
           Connect to Phantom
         </div></div>
     );
   }
   else return (
-    <a href="https://phantom.app/" target="_blank" rel="noopener noreferrer" className="wallet-link">Get Phantom!</a>
+    <a href="https://phantom.app/" target="_blank" rel="noopener noreferrer" className="wallet-link sans">Get Phantom!</a>
   );
 };
 

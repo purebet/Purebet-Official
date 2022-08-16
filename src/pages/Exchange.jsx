@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Nav from "../components/Nav";
 import "./index.scss";
@@ -17,6 +17,21 @@ const Exchange = () => {
   const [changedOdds, setChangedOdds] = useState(oriOdds);
   const [changedStake, setChangedStake] = useState();
   const [walletAdd, setWalletAdd] = useState("");
+  const [avaiOdds, setAvaiOdds] = useState([]);
+  const [cat, setCat] = useState(false);
+  const [catId, setCatId] = useState(0);
+  const avaiBets = async () => {
+    try {
+      const res = await axios.get("https://usdcavailable.mbdqwfss.repl.co");
+      console.log(res.data);
+      setAvaiOdds(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    avaiBets();
+  }, []);
   return (
     <div>
       <Nav setWalletAdd={setWalletAdd} />
@@ -31,15 +46,27 @@ const Exchange = () => {
         <br />
         <span>Purebet.</span>
       </div>
-      <Categories />
-      <AvailableBets
-        setBetData={setBetData}
-        setBetSlipOpen={setBetSlipOpen}
-        setChangedOdds={setChangedOdds}
-        setAccArrStake={setAccArrStake}
-        setChangedStake={setChangedStake}
-        setAccArray={setAccArray}
-      />
+      <div className="betting-events-wrapper">
+        <h3 className="serif-600 sect-title">Upcoming Events.</h3>
+        <div className="bet-events">
+          {avaiOdds.slice(0, 4).map((item, index) => {
+            return (
+              <AvailableBets
+                setBetData={setBetData}
+                setBetSlipOpen={setBetSlipOpen}
+                setChangedOdds={setChangedOdds}
+                setAccArrStake={setAccArrStake}
+                setChangedStake={setChangedStake}
+                setAccArray={setAccArray}
+                item={item}
+                index={index}
+                avaiOdds={avaiOdds}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <Categories setCat={setCat} setCatId={setCatId} />
       <BetSlip
         betData={betData}
         betSlipOpen={betSlipOpen}
