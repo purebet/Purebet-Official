@@ -201,3 +201,28 @@ header{
 .wallet-btn{
     font-size: 2ch;
 }
+
+.succ-pop{
+    position: fixed;
+    top: -10em;
+    left: 50%;
+    z-index: 20;
+    background: linear-gradient(180deg, rgba(85, 221, 224, 1) 23.96%, rgba(242, 135, 5, 1) 100%);
+    box-shadow: 15px 15px 15px rgba(242, 135, 5, 0.25);
+    padding: 1em 2em;
+    border-radius: 10px;
+    transform: translateX(-50%);
+    transition: top .3s ease;
+}
+
+.succ-wrap{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: -200vh;
+    left: 0;
+    z-index: 15;
+}
+.succ-open{
+    top: 1em;
+}

@@ -22,6 +22,13 @@ const Nav = ({ setWalletAdd }) => {
           <Link to="/PendingBets" className="sans nav-ele">
             Pending Bets
           </Link>
+          <a
+            href="https://purecrash.mbdqwfss.repl.co/"
+            target="_blank"
+            className="sans nav-ele"
+          >
+            Casino Game
+          </a>
           <WalletBtn setWalletAdd={setWalletAdd} />
         </div>
       </header>

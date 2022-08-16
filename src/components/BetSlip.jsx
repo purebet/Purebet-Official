@@ -23,6 +23,7 @@ const BetSlip = ({
   accArray,
 }) => {
   const [resData, setResData] = useState("");
+  const [succPop, setSuccPop] = useState();
   const placeBets = async (e) => {
     e.preventDefault();
     try {
@@ -88,6 +89,13 @@ const BetSlip = ({
       let signed = await window.solana.signTransaction(transaction);
       let signature = await connection.sendRawTransaction(signed.serialize());
       console.log(signature);
+      setBetSlipOpen(false);
+      if (signature != "") {
+        const timeOut = setTimeout(() => {
+          setSuccPop(true);
+        }, 2000);
+        return () => clearInterval(timeOut);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -103,11 +111,23 @@ const BetSlip = ({
     setChangedStake(event.target.value);
   };
 
+  const closeSucc = () => {
+    setSuccPop(false);
+  };
+
   console.log(changedStake);
   console.log(betData);
   console.log(walletAdd);
   return (
     <div>
+      <div
+        className={`succ-wrap ${succPop && "succ-open"}`}
+        onClick={closeSucc}
+      >
+        <div className={`succ-pop sans ${succPop && "succ-open"}`}>
+          Transaction Successful!
+        </div>
+      </div>
       <div
         className={`betslip-wrapper ${betSlipOpen && "betslip-closed"}`}
         onClick={closeSlip}
