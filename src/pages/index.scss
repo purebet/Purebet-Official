@@ -48,7 +48,7 @@ body{
 }
 
 .logo{
-    margin: 3.25em 6.25em;
+    margin: 3.25em 0em;
 }
 .bg-img{
     position: absolute;
@@ -126,4 +126,19 @@ body{
 
 .all-events{
     display: flex;
+}
+
+
+.p-sect-title{
+    margin: 1em 3.25em;
+}
+.p-msg{
+    text-align: center;
+}
+.p-bets-btn{
+    font-size: 2ch;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1em;
 }

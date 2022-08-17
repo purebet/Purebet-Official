@@ -7,10 +7,12 @@ const Nav = ({ setWalletAdd }) => {
   return (
     <div>
       <header>
-        <StaticImage
-          src="../assets/Logo/Group 37.png"
-          className="logo"
-        ></StaticImage>
+        <Link to="/">
+          <StaticImage
+            src="../assets/Logo/Group 37.png"
+            className="logo"
+          ></StaticImage>
+        </Link>
         <div className="right-nav">
           <Link to="/Exchange" className="sans nav-ele">
             Home

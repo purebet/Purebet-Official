@@ -20,10 +20,8 @@ const PendingBets = () => {
     return (
       <div>
         <Nav setWalletAdd={setWalletAdd} />
-        <h3 className="serif-600">Pending Bets.</h3>
-        <h5 className="serif-400">
-          Please connect your wallet and click the button bellow.
-        </h5>
+        <h3 className="serif-600 p-sect-title">Pending Bets.</h3>
+        <h5 className="serif-400 p-msg">Please connect your wallet.</h5>
       </div>
     );
 
@@ -31,9 +29,10 @@ const PendingBets = () => {
     <div>
       <Nav setWalletAdd={setWalletAdd} />
       <div>
-        <h3 className="serif">Pending Bets.</h3>
-        <div className="p-bets-wrapper sans btn" onClick={getPendingBets}>
-          Get bets!!
+        <h3 className="serif-600 p-sect-title">Pending Bets.</h3>
+        <h5 className="serif-400 p-msg">Please click the button below.</h5>
+        <div className="p-bets-btn sans btn" onClick={getPendingBets}>
+          Get Pending Bets!!
         </div>
       </div>
       <div>

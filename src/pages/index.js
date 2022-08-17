@@ -46,8 +46,15 @@ const index = () => {
         </h3>
         <p className="sans">
           Check out our <a>About Us</a> page. Follow us on{" "}
-          <a href=""> Twitter</a> to stay updated and <br /> join our{" "}
-          <a href="">Discord</a> to meet the community/ask questions!
+          <a href="https://twitter.com/Purebet_io" target="_blank">
+            {" "}
+            Twitter
+          </a>{" "}
+          to stay updated and <br /> join our{" "}
+          <a href="https://discord.com/invite/3UWkCEQGka" target="_blank">
+            Discord
+          </a>{" "}
+          to meet the community/ask questions!
         </p>
       </div>
     </main>

@@ -56,7 +56,7 @@ const SortByCategory = () => {
         <Nav setWalletAdd={setWalletAdd} />
         <Categories setCat={setCat} setCatId={setCatId} />
         <div className="betting-events-wrapper">
-          <h3 className="serif-600 sect-title">Explor All Events.</h3>
+          <h3 className="serif-600 sect-title">Explore All Events.</h3>
           <div className="bet-events all-events">
             {avaiOdds.map((item, index) => {
               return (
