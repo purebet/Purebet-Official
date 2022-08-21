@@ -43,7 +43,7 @@ const SortByCategory = () => {
 
   const events = [
     { id: 0, eventName: "Politics", icon: election },
-    { id: 1, eventName: "Basketball", icon: basketball },
+    { id: 1, eventName: "Baseball", icon: basketball },
     { id: 2, eventName: "Soccer", icon: soccer },
     { id: 3, eventName: "Combat Sports", icon: boxing },
     { id: 4, eventName: "Cricket", icon: cricket },
