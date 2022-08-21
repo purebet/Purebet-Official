@@ -15,8 +15,8 @@ const index = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Purebet</title>
-        <link rel="icon" type="image/x-icon" href=""></link>
-        <link rel="apple-touch-icon" href="/apple-favicon.png" />
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico"></link>
+        <link rel="apple-touch-icon" href="../images/apple-favicon.png" />
       </Helmet>
       <Nav />
       <img src={bgImg} className="bg-img"></img>
