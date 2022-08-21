@@ -27,7 +27,7 @@ const SortByCategory = () => {
   const [catId, setCatId] = useState();
   const avaiBets = async () => {
     try {
-      const res = await axios.get("https://script.google.com/macros/s/AKfycbys2JQ0FMvmgfG3JN_ppXqoOXiA4Kxg46nkl4fmPIrPE2ja4SO79FDdnvcjVDhKNvVO/exec");
+      const res = await axios.get("https://script.google.com/macros/s/AKfycbxBduEoSZjDh1ZWpfNn_x3Qsqa12_z3XEFt7A8KemNmfs5yDj4YkzdTf8TbINHKmVI7/exec");
       console.log(res.data);
       setAvaiOdds(res.data);
     } catch (error) {
