@@ -29,6 +29,7 @@ const BetSlip = ({
     e.preventDefault();
     try {
       if(!window.solana.isConnected){
+        //make a new commit for gatsby to see, why isn't this deploying?
         alert("Please connect your Phantom Wallet first. ");
         return;
       }
