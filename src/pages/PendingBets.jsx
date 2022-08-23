@@ -41,6 +41,7 @@ const PendingBets = () => {
   return (
     
       <div>
+    <Nav setWalletAdd={setWalletAdd} />
             <table id = "pendingbets">
               <tr>
                 <th className = "serif-400"> Event </th>
@@ -59,13 +60,7 @@ const PendingBets = () => {
               </tr>
             ))}
             </table>
-        <h4 className="serif-600">Event.</h4>
-        <h5 className="serif-400">Date.</h5>
-        <div className="bet-event open-bet-details">
-          <div>
-            <h4 className="serif-600 team-name home-team">Backing Home</h4>
-          </div>
-        </div>
+       
       </div>
   );
 };
