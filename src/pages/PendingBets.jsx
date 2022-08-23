@@ -7,39 +7,12 @@ import { useState } from "react";
 const PendingBets = () => {
   const [walletAdd, setWalletAdd] = useState("");
   const [pendingData, setPendingData] = useState();
-  var table = document.getElementById("pendingbets");
   //var games = [
   const getPendingBets = async () => {
     const res = await axios.get(
       `https://usdcpending.mbdqwfss.repl.co/?key=${walletAdd}`
     );
-    console.log(res);
-    for(var x = 0; x < res.data.length; x++){
-      var row = document.createElement("tr");
-      
-      var event = document.createElement("td");
-      event.innerHTML = res.data[x].id2;
-      row.appendChild(event);
-      
-      var team = document.createElement("td");
-      team.innerHTML = res.data[x].ha;
-      row.appendChild(team);
-      
-      var matched = document.createElement("td");
-      matched.innerHTML = res.data[x].isMatched;
-      row.appendChild(matched);
-      
-      var stake = document.createElement("td");
-      stake.innerHTML = res.data[x].stake;
-      row.appendChild(stake);
-      
-      var odds = document.createElement("td");
-      odds.innerHTML = res.data[x].odds;
-      row.appendChild(odds);
-      
-      table.appendChild(row);
-    }
-      
+    console.log(res);      
     setPendingData(res.data);
     console.log(walletAdd);
   };
@@ -51,8 +24,8 @@ const PendingBets = () => {
         <h5 className="serif-400 p-msg">Please connect your wallet.</h5>
       </div>
     );
-
-  return (
+  else if(pendingData == null)
+    return(
     <div>
       <Nav setWalletAdd={setWalletAdd} />
       <div>
@@ -62,6 +35,11 @@ const PendingBets = () => {
           Get Pending Bets!!
         </div>
       </div>
+    </div>
+    );
+
+  return (
+    
       <div>
             <table id = "pendingbets">
               <tr>
@@ -71,6 +49,15 @@ const PendingBets = () => {
                 <th> Stake </th>
                 <th> Odds </th>
               </tr>
+            {pendingData.map((bet) => (
+              <tr>
+                <td> {bets.id2} </td>
+                <td> {bets.ha} </td>
+                <td> {bets.isMatched} </td>
+                <td> {bets.stake} </td>
+                <td> {bets.odds} </td>
+              </tr>
+            ))}
             </table>
         <h4 className="serif-600">Event.</h4>
         <h5 className="serif-400">Date.</h5>
@@ -80,7 +67,6 @@ const PendingBets = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
