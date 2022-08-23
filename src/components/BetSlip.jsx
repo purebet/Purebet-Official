@@ -24,6 +24,7 @@ const BetSlip = ({
 }) => {
   const [resData, setResData] = useState("");
   const [succPop, setSuccPop] = useState();
+  const [hash, setHash] = useState("https://explorer.solana.com");
   const placeBets = async (e) => {
     e.preventDefault();
     try {
@@ -93,6 +94,7 @@ const BetSlip = ({
       if (signature != "") {
         const timeOut = setTimeout(() => {
           setSuccPop(true);
+          setHash("https://explorer.solana.com/tx/" + signature + "?cluster=devnet");
         }, 2000);
         return () => clearInterval(timeOut);
       }
@@ -125,7 +127,7 @@ const BetSlip = ({
         onClick={closeSucc}
       >
         <div className={`succ-pop sans ${succPop && "succ-open"}`}>
-          Transaction Successful!
+          Transaction Successful! <a href = {hash} target = "_blank"> Explorer </a>
         </div>
       </div>
       <div
