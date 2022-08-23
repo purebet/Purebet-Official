@@ -7,7 +7,7 @@ import { useState } from "react";
 const PendingBets = () => {
   const [walletAdd, setWalletAdd] = useState("");
   const [pendingData, setPendingData] = useState();
-
+  //var games = [
   const getPendingBets = async () => {
     const res = await axios.get(
       `https://usdcpending.mbdqwfss.repl.co/?key=${walletAdd}`
@@ -36,6 +36,25 @@ const PendingBets = () => {
         </div>
       </div>
       <div>
+            <table id = "pendingbets">
+              <tr>
+                <th> Event </th>
+                <th> Backing </th>
+                <th> Is Matched? </th>
+                <th> Stake </th>
+                <th> Odds </th>
+              </tr>
+            
+                  {pendingData.map((bet) => (
+                    <tr>
+                    <td className = "serif-600">{bet.id1}</td>
+                    <td className = "serif-600 team-name">{bet.ha}</td>
+                    <td className = "serif-600">{bet.isMatched}</td>
+                    <td className = "serif-600">{bet.stake}</td>
+                    <td className = "serif-600">{bet.odds}</td>
+                    </tr>
+                  ))}
+            </table>  
         <h4 className="serif-600">Event.</h4>
         <h5 className="serif-400">Date.</h5>
         <div className="bet-event open-bet-details">
