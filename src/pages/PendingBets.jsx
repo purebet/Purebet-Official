@@ -52,7 +52,7 @@ const PendingBets = () => {
             {pendingData.map((bet) => (
               <tr>
                 <td className = "serif-600"> {bet.event} </td>
-                <tdclassName = "serif-600"> {bet.team} </td>
+                <td className = "serif-600"> {bet.team} </td>
                 <td className = "serif-600"> {bet.isMatched} </td>
                 <td className = "serif-600"> {bet.stake} </td>
                 <td className = "serif-600"> {bet.odds} </td>
