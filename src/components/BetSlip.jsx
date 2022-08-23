@@ -28,6 +28,10 @@ const BetSlip = ({
   const placeBets = async (e) => {
     e.preventDefault();
     try {
+      if(!window.solana.isConnected){
+        alert("Please connect your Phantom Wallet first. ");
+        return;
+      }
       const oriOdds = betData[2];
       const oriStake = betData[3];
       let finalArr = [];
