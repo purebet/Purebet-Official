@@ -7,10 +7,10 @@ import { useState } from "react";
 const PendingBets = () => {
   const [walletAdd, setWalletAdd] = useState("");
   const [pendingData, setPendingData] = useState();
-  //var games = [
+  
   const getPendingBets = async () => {
     const res = await axios.get(
-      `https://usdcpending.mbdqwfss.repl.co/?key=${walletAdd}`
+      `https://script.google.com/macros/s/AKfycbx-deCaSb4iS80iQhsR-SqhFFmT5M1wW0rYyjDLJGoyKiSzx8dkHztqk_kqMfD8VKZLOg/exec?key=${walletAdd}`
     );
     console.log(res);      
     setPendingData(res.data);
@@ -51,11 +51,11 @@ const PendingBets = () => {
               </tr>
             {pendingData.map((bet) => (
               <tr>
-                <td> {bet.id2} </td>
-                <td> {bet.ha} </td>
-                <td> {bet.isMatched} </td>
-                <td> {bet.stake} </td>
-                <td> {bet.odds} </td>
+                <td className = "serif-600"> {bet.event} </td>
+                <tdclassName = "serif-600"> {bet.team} </td>
+                <td className = "serif-600"> {bet.isMatched} </td>
+                <td className = "serif-600"> {bet.stake} </td>
+                <td className = "serif-600"> {bet.odds} </td>
               </tr>
             ))}
             </table>
