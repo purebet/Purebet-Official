@@ -98,7 +98,7 @@ const SortByCategory = () => {
       <Categories setCat={setCat} setCatId={setCatId} />
       <div className="betting-events-wrapper">
         <h3 className="serif-600 sect-title">
-          Explor {events[catId].eventName} Events.
+          Explore {events[catId].eventName} Events.
         </h3>
         <div className="bet-events all-events">
           {avaiOdds.map((item, index) => {
