@@ -10,7 +10,7 @@ const PendingBets = () => {
   
   const getPendingBets = async () => {
     const res = await axios.get(
-      `https://script.google.com/macros/s/AKfycbx-deCaSb4iS80iQhsR-SqhFFmT5M1wW0rYyjDLJGoyKiSzx8dkHztqk_kqMfD8VKZLOg/exec?key=${walletAdd}`
+      `https://script.google.com/macros/s/AKfycbxidrCckVkbwmoj1-Cw5JJuLoCy98FJRnrjhshIfpuJpcgnkR7P_iNwf0FTQI1SPnSo7g/exec?key=${walletAdd}`
     );
     console.log(res);      
     setPendingData(res.data);
@@ -43,19 +43,19 @@ const PendingBets = () => {
       <div>
             <table id = "pendingbets">
               <tr>
-                <th> Event </th>
-                <th> Backing </th>
-                <th> Is Matched? </th>
-                <th> Stake </th>
-                <th> Odds </th>
+                <th className = "serif-400"> Event </th>
+                <th className = "serif-400"> Backing </th>
+                <th className = "serif-400"> Is Matched? </th>
+                <th className = "serif-400"> Stake </th>
+                <th className = "serif-400"> Odds </th>
               </tr>
             {pendingData.map((bet) => (
               <tr>
-                <td className = "serif-600"> {bet.event} </td>
-                <td className = "serif-600"> {bet.team} </td>
-                <td className = "serif-600"> {bet.isMatched} </td>
-                <td className = "serif-600"> {bet.stake} </td>
-                <td className = "serif-600"> {bet.odds} </td>
+                <td className = "serif-400"> {bet.event} </td>
+                <td className = "serif-400"> {bet.team} </td>
+                <td className = "serif-400"> {bet.isMatched} </td>
+                <td className = "serif-400"> {bet.stake} </td>
+                <td className = "serif-400"> {bet.odds} </td>
               </tr>
             ))}
             </table>
