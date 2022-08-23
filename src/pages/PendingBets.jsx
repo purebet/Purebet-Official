@@ -51,11 +51,11 @@ const PendingBets = () => {
               </tr>
             {pendingData.map((bet) => (
               <tr>
-                <td> {bets.id2} </td>
-                <td> {bets.ha} </td>
-                <td> {bets.isMatched} </td>
-                <td> {bets.stake} </td>
-                <td> {bets.odds} </td>
+                <td> {bet.id2} </td>
+                <td> {bet.ha} </td>
+                <td> {bet.isMatched} </td>
+                <td> {bet.stake} </td>
+                <td> {bet.odds} </td>
               </tr>
             ))}
             </table>
