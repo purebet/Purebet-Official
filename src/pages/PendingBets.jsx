@@ -7,12 +7,39 @@ import { useState } from "react";
 const PendingBets = () => {
   const [walletAdd, setWalletAdd] = useState("");
   const [pendingData, setPendingData] = useState();
+  var table = document.getElementById("pendingbets");
   //var games = [
   const getPendingBets = async () => {
     const res = await axios.get(
       `https://usdcpending.mbdqwfss.repl.co/?key=${walletAdd}`
     );
     console.log(res);
+    for(var x = 0; x < res.data.length; x++){
+      var row = document.createElement("tr");
+      
+      var event = document.createElement("td");
+      event.innerHTML = res.data[x].id2;
+      row.appendChild(event);
+      
+      var team = document.createElement("td");
+      team.innerHTML = res.data[x].ha;
+      row.appendChild(team);
+      
+      var matched = document.createElement("td");
+      matched.innerHTML = res.data[x].isMatched;
+      row.appendChild(matched);
+      
+      var stake = document.createElement("td");
+      stake.innerHTML = res.data[x].stake;
+      row.appendChild(stake);
+      
+      var odds = document.createElement("td");
+      odds.innerHTML = res.data[x].odds;
+      row.appendChild(odds);
+      
+      table.appendChild(row);
+    }
+      
     setPendingData(res.data);
     console.log(walletAdd);
   };
@@ -44,17 +71,7 @@ const PendingBets = () => {
                 <th> Stake </th>
                 <th> Odds </th>
               </tr>
-            
-                  {pendingData.map((bet) => (
-                    <tr>
-                    <td className = "serif-600">{bet.id1}</td>
-                    <td className = "serif-600 team-name">{bet.ha}</td>
-                    <td className = "serif-600">{bet.isMatched}</td>
-                    <td className = "serif-600">{bet.stake}</td>
-                    <td className = "serif-600">{bet.odds}</td>
-                    </tr>
-                  ))}
-            </table>  
+            </table>
         <h4 className="serif-600">Event.</h4>
         <h5 className="serif-400">Date.</h5>
         <div className="bet-event open-bet-details">
