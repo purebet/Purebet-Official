@@ -36,6 +36,7 @@ const BetSlip = ({
       const oriOdds = betData[2];
       const oriStake = betData[3];
       let finalArr = [];
+      let changedStakeCopy = changedStake;
       console.log(accArrStake);
       console.log(accArray);
       for (let i = 0; i < accArrStake.length; i++) {
@@ -51,11 +52,11 @@ const BetSlip = ({
         }
         let acctemp = accArray[i];
         let stakeTemp = accArrStake[i];
-        if ((i = accArrStake.length - 1 || changedStake < stakeTemp)) {
+        if ((i = accArrStake.length - 1 || changedStakeCopy < stakeTemp)) {
           finalArr.push({
             odds: changedOdds,
             originalOdds: oriOdds,
-            stake: changedStake,
+            stake: changedStakeCopy,
             originalStake: stakeTemp,
             acc: acctemp,
           });
@@ -68,7 +69,8 @@ const BetSlip = ({
           originalStake: stakeTemp,
           acc: acctemp,
         });
-        setChangedStake((prev) => prev - stakeTemp);
+        //setChangedStake((prev) => prev - stakeTemp);
+        changedStakeCopy -= stakeTemp;
       }
       console.log(finalArr);
       const json = JSON.stringify(finalArr);
