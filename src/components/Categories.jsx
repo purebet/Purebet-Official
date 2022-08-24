@@ -12,7 +12,7 @@ import football from "../images/Icons/rugby-ball.png";
 const Categories = ({ setCat, setCatId }) => {
   const events = [
     { id: 0, eventName: "USA Elections", icon: election },
-    { id: 1, eventName: "Basketball", icon: basketball },
+    { id: 1, eventName: "Baseball", icon: basketball },
     { id: 2, eventName: "Soccer", icon: soccer },
     { id: 3, eventName: "Boxing", icon: boxing },
     { id: 4, eventName: "Cricket", icon: cricket },

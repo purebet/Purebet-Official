@@ -27,7 +27,7 @@ const SortByCategory = () => {
   const [catId, setCatId] = useState();
   const avaiBets = async () => {
     try {
-      const res = await axios.get("https://usdcavailable.mbdqwfss.repl.co");
+      const res = await axios.get("https://script.google.com/macros/s/AKfycbxBduEoSZjDh1ZWpfNn_x3Qsqa12_z3XEFt7A8KemNmfs5yDj4YkzdTf8TbINHKmVI7/exec");
       console.log(res.data);
       setAvaiOdds(res.data);
     } catch (error) {
@@ -43,7 +43,7 @@ const SortByCategory = () => {
 
   const events = [
     { id: 0, eventName: "Politics", icon: election },
-    { id: 1, eventName: "Basketball", icon: basketball },
+    { id: 1, eventName: "Baseball", icon: basketball },
     { id: 2, eventName: "Soccer", icon: soccer },
     { id: 3, eventName: "Combat Sports", icon: boxing },
     { id: 4, eventName: "Cricket", icon: cricket },
@@ -98,7 +98,7 @@ const SortByCategory = () => {
       <Categories setCat={setCat} setCatId={setCatId} />
       <div className="betting-events-wrapper">
         <h3 className="serif-600 sect-title">
-          Explor {events[catId].eventName} Events.
+          Explore {events[catId].eventName} Events.
         </h3>
         <div className="bet-events all-events">
           {avaiOdds.map((item, index) => {
