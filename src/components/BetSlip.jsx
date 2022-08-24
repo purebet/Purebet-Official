@@ -52,7 +52,7 @@ const BetSlip = ({
         }
         let acctemp = accArray[i];
         let stakeTemp = accArrStake[i];
-        if ((i = accArrStake.length - 1 || changedStakeCopy < stakeTemp)) {
+        if ((i == accArrStake.length - 1 || changedStakeCopy < stakeTemp)) {          
           finalArr.push({
             odds: changedOdds,
             originalOdds: oriOdds,
