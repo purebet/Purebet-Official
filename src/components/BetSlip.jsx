@@ -28,7 +28,7 @@ const BetSlip = ({
   const placeBets = async (e) => {
     e.preventDefault();
     try {
-      if(!window.solana.isConnected){
+      if(walletAdd == ""){
         //make a new commit for gatsby to see, why isn't this deploying?
         alert("Please connect your Phantom Wallet first. ");
         return;
