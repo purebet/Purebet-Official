@@ -42,7 +42,7 @@ const PendingBets = () => {
     
       <div>
     <Nav setWalletAdd={setWalletAdd} />
-            <table id = "pendingbets" style = "margin-left:auto;margin-right:auto;">
+            <table id = "pendingbets" style = "marginLeft:auto; marginRight:auto;">
               <tr>
                 <th className = "serif-400"> Event </th>
                 <th className = "serif-400"> Backing </th>
