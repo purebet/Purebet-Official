@@ -42,7 +42,7 @@ const PendingBets = () => {
     
       <div>
     <Nav setWalletAdd={setWalletAdd} />
-            <table id = "pendingbets">
+            <table id = "pendingbets" style = "margin-left:auto;margin-right:auto;">
               <tr>
                 <th className = "serif-400"> Event </th>
                 <th className = "serif-400"> Backing </th>
@@ -52,11 +52,11 @@ const PendingBets = () => {
               </tr>
             {pendingData.map((bet) => (
               <tr>
-                <td className = "serif-400"> {bet.event} </td>
-                <td className = "serif-400"> {bet.team} </td>
-                <td className = "serif-400"> {bet.isMatched} </td>
-                <td className = "serif-400"> {bet.stake} </td>
-                <td className = "serif-400"> {bet.odds} </td>
+                <td className = "serif-400" style = "padding:1%;" > {bet.event} </td>
+                <td className = "serif-400" style = "padding:1%;"> {bet.team} </td>
+                <td className = "serif-400" style = "padding:1%;"> {bet.isMatched} </td>
+                <td className = "serif-400" style = "padding:1%;"> {bet.stake} </td>
+                <td className = "serif-400" style = "padding:1%;"> {bet.odds} </td>
               </tr>
             ))}
             </table>
