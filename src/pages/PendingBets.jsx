@@ -7,12 +7,12 @@ import { useState } from "react";
 const PendingBets = () => {
   const [walletAdd, setWalletAdd] = useState("");
   const [pendingData, setPendingData] = useState();
-
+  
   const getPendingBets = async () => {
     const res = await axios.get(
-      `https://usdcpending.mbdqwfss.repl.co/?key=${walletAdd}`
+      `https://script.google.com/macros/s/AKfycbwjTojh5QMQRoXLhSdBq4t3bSL6EumvtmtBczHQsYQZkAORragqz9HM5GRKQFaE7RIk5Q/exec?key=${walletAdd}`
     );
-    console.log(res);
+    console.log(res);      
     setPendingData(res.data);
     console.log(walletAdd);
   };
@@ -24,8 +24,8 @@ const PendingBets = () => {
         <h5 className="serif-400 p-msg">Please connect your wallet.</h5>
       </div>
     );
-
-  return (
+  else if(pendingData == null)
+    return(
     <div>
       <Nav setWalletAdd={setWalletAdd} />
       <div>
@@ -35,16 +35,33 @@ const PendingBets = () => {
           Get Pending Bets!!
         </div>
       </div>
-      <div>
-        <h4 className="serif-600">Event.</h4>
-        <h5 className="serif-400">Date.</h5>
-        <div className="bet-event open-bet-details">
-          <div>
-            <h4 className="serif-600 team-name home-team">Backing Home</h4>
-          </div>
-        </div>
-      </div>
     </div>
+    );
+
+  return (
+    
+      <div>
+    <Nav setWalletAdd={setWalletAdd} />
+            <table style={{marginLeft:"auto", marginRight:"auto"}}>
+              <tr>
+                <th className = "serif-400" style = {{padding:"2%"}}> Event </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Backing </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Is Matched? </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Stake </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Odds </th>
+              </tr>
+            {pendingData.map((bet) => (
+              <tr>
+                <td className = "serif-400" style = {{padding:"2%"}} > {bet.event} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.team} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.isMatched} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.stake} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.odds} </td>
+              </tr>
+            ))}
+            </table>
+       
+      </div>
   );
 };
 

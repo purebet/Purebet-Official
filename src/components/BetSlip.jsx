@@ -24,12 +24,19 @@ const BetSlip = ({
 }) => {
   const [resData, setResData] = useState("");
   const [succPop, setSuccPop] = useState();
+  const [hash, setHash] = useState("https://explorer.solana.com");
   const placeBets = async (e) => {
     e.preventDefault();
     try {
+      if(walletAdd == ""){
+        //make a new commit for gatsby to see, why isn't this deploying?
+        alert("Please connect your Phantom Wallet first. ");
+        return;
+      }
       const oriOdds = betData[2];
       const oriStake = betData[3];
       let finalArr = [];
+      let changedStakeCopy = changedStake;
       console.log(accArrStake);
       console.log(accArray);
       for (let i = 0; i < accArrStake.length; i++) {
@@ -45,11 +52,11 @@ const BetSlip = ({
         }
         let acctemp = accArray[i];
         let stakeTemp = accArrStake[i];
-        if ((i = accArrStake.length - 1 || changedStake < stakeTemp)) {
+        if ((i == accArrStake.length - 1 || changedStakeCopy < stakeTemp)) {          
           finalArr.push({
             odds: changedOdds,
             originalOdds: oriOdds,
-            stake: changedStake,
+            stake: changedStakeCopy,
             originalStake: stakeTemp,
             acc: acctemp,
           });
@@ -62,7 +69,8 @@ const BetSlip = ({
           originalStake: stakeTemp,
           acc: acctemp,
         });
-        setChangedStake((prev) => prev - stakeTemp);
+        //setChangedStake((prev) => prev - stakeTemp);
+        changedStakeCopy -= stakeTemp;
       }
       console.log(finalArr);
       const json = JSON.stringify(finalArr);
@@ -93,6 +101,7 @@ const BetSlip = ({
       if (signature != "") {
         const timeOut = setTimeout(() => {
           setSuccPop(true);
+          setHash("https://explorer.solana.com/tx/" + signature + "?cluster=devnet");
         }, 2000);
         return () => clearInterval(timeOut);
       }
@@ -125,7 +134,7 @@ const BetSlip = ({
         onClick={closeSucc}
       >
         <div className={`succ-pop sans ${succPop && "succ-open"}`}>
-          Transaction Successful!
+          Transaction Successful! <a href = {hash} target = "_blank"> Explorer </a>
         </div>
       </div>
       <div
