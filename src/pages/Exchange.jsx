@@ -22,7 +22,7 @@ const Exchange = () => {
   const [catId, setCatId] = useState(0);
   const avaiBets = async () => {
     try {
-      const res = await axios.get("https://script.google.com/macros/s/AKfycbxBduEoSZjDh1ZWpfNn_x3Qsqa12_z3XEFt7A8KemNmfs5yDj4YkzdTf8TbINHKmVI7/exec");
+      const res = await axios.get("https://script.google.com/macros/s/AKfycbwhOmJSqlNa5hujNtnBVi6RnGtVchsV-l520XkQtUnw5QI9FF4FozTRbGICKj1jLZ1d/exec");
       console.log(res.data);
       setAvaiOdds(res.data);
     } catch (error) {

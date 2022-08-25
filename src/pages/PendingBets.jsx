@@ -42,21 +42,21 @@ const PendingBets = () => {
     
       <div>
     <Nav setWalletAdd={setWalletAdd} />
-            <table id = "pendingbets">
+            <table style={{marginLeft:"auto", marginRight:"auto"}}>
               <tr>
-                <th className = "serif-400"> Event </th>
-                <th className = "serif-400"> Backing </th>
-                <th className = "serif-400"> Is Matched? </th>
-                <th className = "serif-400"> Stake </th>
-                <th className = "serif-400"> Odds </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Event </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Backing </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Is Matched? </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Stake </th>
+                <th className = "serif-400" style = {{padding:"2%"}}> Odds </th>
               </tr>
             {pendingData.map((bet) => (
               <tr>
-                <td className = "serif-400"> {bet.event} </td>
-                <td className = "serif-400"> {bet.team} </td>
-                <td className = "serif-400"> {bet.isMatched} </td>
-                <td className = "serif-400"> {bet.stake} </td>
-                <td className = "serif-400"> {bet.odds} </td>
+                <td className = "serif-400" style = {{padding:"2%"}} > {bet.event} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.team} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.isMatched} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.stake} </td>
+                <td className = "serif-400" style = {{padding:"2%"}}> {bet.odds} </td>
               </tr>
             ))}
             </table>
