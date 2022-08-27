@@ -40,6 +40,7 @@ const NotFoundPage = () => {
         <br />
         <Link to="/">Go home</Link>.
       </p>
+<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/lbianlbian/Purebet-Exchange-v2/master/src/images/apple-favicon.png"/>
     </main>
   )
 }
