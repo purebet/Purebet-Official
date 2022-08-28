@@ -15,8 +15,10 @@ const index = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Purebet</title>
-        <link rel="icon" type="image/x-icon" href=""></link>
+        <link rel="icon" type="image/x-icon" href=""></link> 
         <link rel="apple-touch-icon" href="/apple-favicon.png" />
+   
+        <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/lbianlbian/Purebet-Exchange-v2/master/src/images/apple-favicon.png"/>
       </Helmet>
       <Nav />
       <img src={bgImg} className="bg-img"></img>
