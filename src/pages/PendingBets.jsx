@@ -10,7 +10,7 @@ const PendingBets = () => {
   
   const getPendingBets = async () => {
     const res = await axios.get(
-      `https://script.google.com/macros/s/AKfycbwjTojh5QMQRoXLhSdBq4t3bSL6EumvtmtBczHQsYQZkAORragqz9HM5GRKQFaE7RIk5Q/exec?key=${walletAdd}`
+      `https://script.google.com/macros/s/AKfycbxCY_YhtNe-GCBm98zDC11eSx6p9-cwQSfxS56BM3dCpY6cl5EbM-RU5zSn2_x3ex4HQg/exec?key=${walletAdd}`
     );
     console.log(res);      
     setPendingData(res.data);
