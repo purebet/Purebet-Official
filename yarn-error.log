@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\anike\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add --dev gatsby-plugin-favicons
+
+PATH: 
+  C:\Users\anike\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\anike\bin;C:\Program Files\Python38\Scripts;C:\Program Files\Python38;C:\Program Files\Python39\Scripts;C:\Program Files\Python39;C:\Program Files\Python310\python.exe;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Java\jre1.8.0_281\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\usr\bin;C:\Program Files\Java\jdk-11.0.8\bin;C:\Program Files (x86)\Brackets\command;C:\Users\anike\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\anike\AppData\Local\Programs\Python\Python38;C:\Users\anike\AppData\Local\Microsoft\WindowsApps;C:\Users\anike\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\anike\AppData\Roaming\npm;C:\Users\anike\.ebcli-virtual-env\executables;C:\adb;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Users\anike\AppData\Roaming\Python\Python310\Scripts;C:\Program Files\PostgreSQL\14\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY;C:\Program Files (x86)\Nmap;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\Web Development\purebet-v2\node_modules\@msgpackr-extract\msgpackr-extract-win32-x64\node.abi93.node'
+
+npm manifest: 
+  {
+    "name": "purebet",
+    "version": "1.0.0",
+    "private": true,
+    "description": "purebet",
+    "author": "Aniket Bamotra",
+    "keywords": [
+      "gatsby"
+    ],
+    "scripts": {
+      "develop": "gatsby develop",
+      "start": "gatsby develop",
+      "build": "gatsby build",
+      "serve": "gatsby serve",
+      "clean": "gatsby clean"
+    },
+    "dependencies": {
+      "@solana/web3.js": "^1.53.0",
+      "axios": "^0.27.2",
+      "bytebuffer": "^5.0.1",
+      "gatsby": "^4.20.0",
+      "gatsby-plugin-image": "^2.20.0",
+      "gatsby-plugin-react-helmet": "^5.20.0",
+      "gatsby-plugin-sass": "^5.20.0",
+      "gatsby-plugin-sharp": "^4.20.0",
+      "gatsby-source-filesystem": "^4.20.0",
+      "gatsby-transformer-sharp": "^4.20.0",
+      "react": "^18.1.0",
+      "react-dom": "^18.1.0",
+      "react-helmet": "^6.1.0",
+      "sass": "^1.54.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
