@@ -47,7 +47,7 @@ const index = () => {
           Want to know more about <span>Purebet?</span>
         </h3>
         <p className="sans">
-          Check out our <a href = "https://docs.google.com/document/d/1tCQ5CTwp9gK5DBMFC2g_aD_M0c6S851lREqKl0B4CMw/edit?usp=sharing" target = "_blank">About Us</a> page. Follow us on{" "}
+          Check out our <a href = "https://purebet.io/About">About Us</a> page. Follow us on{" "}
           <a href="https://twitter.com/Purebet_io" target="_blank">
             {" "}
             Twitter
