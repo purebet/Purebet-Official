@@ -20,7 +20,9 @@ const Nav = ({ setWalletAdd }) => {
           <Link to="/SortByCategory" className="sans nav-ele">
             Events
           </Link>
-          <a className="sans nav-ele" href = "https://docs.google.com/document/d/1tCQ5CTwp9gK5DBMFC2g_aD_M0c6S851lREqKl0B4CMw/edit?usp=sharing" target = "_blank">About</a> 
+          <Link to="/About" className="sans nav-ele">
+            About
+          </Link>
           <Link to="/PendingBets" className="sans nav-ele">
             Pending Bets
           </Link>
