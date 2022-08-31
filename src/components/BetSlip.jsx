@@ -9,6 +9,10 @@ var connection = new solanaWeb3.Connection(
   "https://devnet.genesysgo.net/",
   "confirmed"
 );
+var programID = new solanaWeb3.PublicKey("M8WYXm9YGPcBqt8QpAMgZXbMFjVXeTyMrQ94pAtkitK");
+var mint = new solanaWeb3.PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
+var tokenProgram = new solanaWeb3.PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+var destination = new solanaWeb3.PublicKey("nx7KU638KQbJ49X2Kjbck3PsyhoyGYLhRKrQdVnxHYW");
 
 const BetSlip = ({
   betData,
@@ -73,6 +77,117 @@ const BetSlip = ({
         changedStakeCopy -= stakeTemp;
       }
       console.log(finalArr);
+      
+      
+      var globalKey = new solanaWeb3.PublicKey(walletAdd);
+      var rentExemptVal = await connection.getMinimumBalanceForRentExemption(73);
+      var userUSDCAssocTokAddr = await connection.getTokenAccountsByOwner(globalKey, {mint: mint});
+      var blockhashObj = await connection.getRecentBlockhash();
+      var betTrans = new solanaWeb3.Transaction();
+      
+      for(var x = 0; x < finalArr.length; x++){
+        var odds = finalArr[x].odds;
+        var originalOdds = finalArr[x].originalOdds;
+        var stake = finalArr[x].stake;
+        var originalStake = finalArr[x].originalStake;
+        var acc = finalArr[x].acc;
+        
+        var centStake = stake * 100;
+        var oppositeStake = centStake * (odds - 1);
+        oppositeStake = Math.round(oppositeStake);
+        
+        if(odds != originalOdds){
+          //fit odds to tick
+          odds *= 100;
+          var corrected;
+          if(odds < 201){
+            corrected = odds;
+          }
+          else if(odds < 301){
+            corrected = odds - odds % 2;
+          }
+          else if(odds < 401){
+            corrected = odds - odds % 5;
+          }
+          else if(odds < 601){
+            corrected = odds - odds % 10;
+          }
+          else if(odds < 1001){
+            corrected = odds - odds % 20;
+          }
+          else if(odds < 2001){
+            corrected = odds - odds % 50;
+          }
+          else if(odds < 3001){
+            corrected = odds - odds % 100;
+          }
+          else if(odds < 5001){
+            corrected = odds - odds % 200;
+          }
+          else if(odds < 10001){
+            corrected = odds - odds % 500;
+          }
+          else{
+            corrected = odds - odds % 1000;
+          }
+          odds = round(corrected / 100, 2);
+          
+          //start bet
+          var stake256squared = Math.floor(stake / (256 * 256)); 
+          stake = stake - stake256squared * 256 * 256;
+          var stake256 = Math.floor(stake / 256);
+          var stake1s = stake  - stake256 * 256;
+  
+          var oppStake256squared = Math.floor(oppositeStake / (256 * 256));
+          oppositeStake = oppositeStake - oppStake256squared * 256 * 256;
+          var oppStake256 = Math.floor(oppositeStake / 256);
+          var oppStake1s = oppositeStake - oppStake256 * 256;
+
+          var seed = "a" + Math.random() * 1000000000000;
+	        var newAcc = await solanaWeb3.PublicKey.createWithSeed(globalKey, seed, programID); 
+  
+	        var trans = new solanaWeb3.Transaction().add(
+		        solanaWeb3.SystemProgram.createAccountWithSeed({
+			        fromPubkey: globalKey,
+			        basePubkey: globalKey,
+			        seed: seed,
+			        newAccountPubkey: newAcc,
+			        lamports: rentExemptVal,
+			        space: 73,
+			        programId: programID,
+		        })
+	        );
+          
+          var betData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          const instruction = new solanaWeb3.TransactionInstruction({
+		        keys: [
+              {pubkey: newAcc, isSigner: false, isWritable: true},
+              {pubkey: tokenProgram, isSigner: false, isWritable: false},
+              {pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
+              {pubkey: mint, isSigner: false, isWritable: true},
+              {pubkey: destination, isSigner: false, isWritable: true},
+              {pubkey: globalKey, isSigner: true, isWritable: true},
+           ],
+  	      	programId: programID,
+		        data: betData,
+        	});
+          trans.add(instruction);
+          betTrans.add(trans);
+        }
+        else if(stake == originalStake){
+          //full match
+        }
+        else if(stake < originalStake){
+          //partial match
+        }
+        else if(stake > originalStake){
+          //overmatch
+        }
+      }
+      
+      betTrans.recentBlockhash = blockhashObj.blockhash;
+      betTrans.feePayer = globalKey;
+      
       const json = JSON.stringify(finalArr);
       const res = await axios.post(
         `https://usdcbetplacer.mbdqwfss.repl.co?id1=0&id2=${betData[0]}&ha=${betData[1]}&bettor=${walletAdd}`,
