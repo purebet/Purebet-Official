@@ -22,7 +22,7 @@ const About = () => {
         To use this devnet demo.
       </h3>
       <p className="sans about-body">
-        Switch your Phantom wallet to devent by clicking the cog in the bottom
+        Switch your Phantom wallet to devnet by clicking the cog in the bottom
         right, and selecting Change Network then Devnet. Go to{" "}
         <a href="http://solfaucet.com"  target = "_blank"> Sol Faucet </a> to get up to 2 devnet
         SOL. Go to devnet{" "}
@@ -32,6 +32,9 @@ const About = () => {
         strategies before we go to mainnet. Contact us in{" "}
         <a href="https://discord.gg/22tr2FYAh9"  target = "_blank">Discord</a> if you have any
         issues or questions.
+      </p>
+      <p className="sans about-body">
+        Note: Phantom Wallet is unable to provide an accurate simulation of SOL and USDC balance changes before you click Approve. This is due to an update they made 2 weeks ago, and is entirely their fault, not ours. 
       </p>
       <h3 className="serif-600 sect-title a-sect-title">
         Sports betting exchanges 101.
