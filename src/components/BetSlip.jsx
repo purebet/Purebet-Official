@@ -258,7 +258,7 @@ const BetSlip = ({
 		
 		var newStake = (stake - originalStake) * 100;
     		var newOppositeStake = newStake * (odds - 1);
-		var newStake256squared = Math.floor(stake / (256 * 256)); 
+		var newStake256squared = Math.floor(newStake / (256 * 256)); 
         	newStake = newStake - newStake256squared * 256 * 256;
         	var newStake256 = Math.floor(newStake / 256);
         	var newStake1s = newStake  - newStake256 * 256;
