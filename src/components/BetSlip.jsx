@@ -92,7 +92,8 @@ const BetSlip = ({
         var originalStake = finalArr[x].originalStake;
         var acc = finalArr[x].acc;
         
-        var stake = stake * 100;
+	originalStake = originalStake * 100;
+        stake = stake * 100;
         var oppositeStake = stake * (odds - 1);
         oppositeStake = Math.round(oppositeStake);
 	      
@@ -193,6 +194,7 @@ const BetSlip = ({
   	  betTrans.add(instruction);
         }
         else if(stake < originalStake){
+		console.log("partial match running");
           	//partial match
 		var toBePartiallyMatched = new solanaWeb3.PublicKey(acc);
   		var seed = "a" + Math.random() * 1000000000000;
@@ -238,6 +240,7 @@ const BetSlip = ({
         }
         else if(stake > originalStake){
           //overmatch
+		console.log("Overmatch running");
 		var startedBetAcc = new solanaWeb3.PublicKey(acc);
   	  	var instruction = new solanaWeb3.TransactionInstruction({
 			keys: [
