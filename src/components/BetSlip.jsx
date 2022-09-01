@@ -158,7 +158,7 @@ const BetSlip = ({
 		        })
 	        );
           
-          var wesBetData = new Uint8Array([betData[0], 0, betData[1], stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          var wesBetData = new Uint8Array([betData[1], 0, betData[0], stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
           const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
               {pubkey: newAcc, isSigner: false, isWritable: true},
@@ -210,7 +210,7 @@ const BetSlip = ({
 		        })
 	        );
           
-          	var wesBetData = new Uint8Array([betData[0], 0, betData[1], stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          	var wesBetData = new Uint8Array([betData[1], 0, betData[0], stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
           	const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
               			{pubkey: newAcc, isSigner: false, isWritable: true},
