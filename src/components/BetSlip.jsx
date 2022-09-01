@@ -158,7 +158,7 @@ const BetSlip = ({
 		        })
 	        );
           
-          var betData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          var wesBetData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
           const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
               {pubkey: newAcc, isSigner: false, isWritable: true},
@@ -169,7 +169,7 @@ const BetSlip = ({
               {pubkey: globalKey, isSigner: true, isWritable: true},
            ],
   	      	programId: programID,
-		        data: betData,
+		data: wesBetData,
           });
           trans.add(instruction);
           betTrans.add(trans);
@@ -210,7 +210,7 @@ const BetSlip = ({
 		        })
 	        );
           
-          	var betData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          	var wesBetData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
           	const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
               			{pubkey: newAcc, isSigner: false, isWritable: true},
@@ -221,7 +221,7 @@ const BetSlip = ({
               			{pubkey: globalKey, isSigner: true, isWritable: true},
            		],
   	      		programId: programID,
-		        data: betData,
+		        data: wesBetData,
           	});
           	trans.add(instruction);
           	betTrans.add(trans);
@@ -280,7 +280,7 @@ const BetSlip = ({
 		        })
 	        );
           
-          	var betData = new Uint8Array([ha, id1, id2, newStake256squared, newStake256, newStake1s, newOppStake256squared, newOppStake256, newOppStake1s]);
+          	var wesBetData = new Uint8Array([ha, id1, id2, newStake256squared, newStake256, newStake1s, newOppStake256squared, newOppStake256, newOppStake1s]);
           	var instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
               			{pubkey: newAcc, isSigner: false, isWritable: true},
@@ -291,7 +291,7 @@ const BetSlip = ({
               			{pubkey: globalKey, isSigner: true, isWritable: true},
            		],
   	      		programId: programID,
-		        data: betData,
+		        data: wesBetData,
           	});
           	trans.add(instruction);
           	betTrans.add(trans);
