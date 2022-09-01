@@ -140,7 +140,7 @@ const BetSlip = ({
           else{
             corrected = odds - odds % 1000;
           }
-          odds = round(corrected / 100, 2);
+          odds = Math.round(corrected) / 100;
           
           //start bet
           var seed = "a" + Math.random() * 1000000000000;
