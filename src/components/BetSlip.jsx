@@ -92,9 +92,19 @@ const BetSlip = ({
         var originalStake = finalArr[x].originalStake;
         var acc = finalArr[x].acc;
         
-        var centStake = stake * 100;
-        var oppositeStake = centStake * (odds - 1);
+        var stake = stake * 100;
+        var oppositeStake = stake * (odds - 1);
         oppositeStake = Math.round(oppositeStake);
+	      
+	var stake256squared = Math.floor(stake / (256 * 256)); 
+        stake = stake - stake256squared * 256 * 256;
+        var stake256 = Math.floor(stake / 256);
+        var stake1s = stake  - stake256 * 256;
+  
+        var oppStake256squared = Math.floor(oppositeStake / (256 * 256));
+        oppositeStake = oppositeStake - oppStake256squared * 256 * 256;
+        var oppStake256 = Math.floor(oppositeStake / 256);
+        var oppStake1s = oppositeStake - oppStake256 * 256;
         
         if(odds != originalOdds){
           //fit odds to tick
@@ -133,16 +143,6 @@ const BetSlip = ({
           odds = round(corrected / 100, 2);
           
           //start bet
-          var stake256squared = Math.floor(stake / (256 * 256)); 
-          stake = stake - stake256squared * 256 * 256;
-          var stake256 = Math.floor(stake / 256);
-          var stake1s = stake  - stake256 * 256;
-  
-          var oppStake256squared = Math.floor(oppositeStake / (256 * 256));
-          oppositeStake = oppositeStake - oppStake256squared * 256 * 256;
-          var oppStake256 = Math.floor(oppositeStake / 256);
-          var oppStake1s = oppositeStake - oppStake256 * 256;
-
           var seed = "a" + Math.random() * 1000000000000;
 	        var newAcc = await solanaWeb3.PublicKey.createWithSeed(globalKey, seed, programID); 
   
@@ -170,24 +170,137 @@ const BetSlip = ({
            ],
   	      	programId: programID,
 		        data: betData,
-        	});
+          });
           trans.add(instruction);
           betTrans.add(trans);
         }
         else if(stake == originalStake){
           //full match
+	  var startedBetAcc = new solanaWeb3.PublicKey(acc);
+  	  var instruction = new solanaWeb3.TransactionInstruction({
+		keys: [
+      			{pubkey: startedBetAcc, isSigner: false, isWritable: true},
+      			{pubkey: tokenProgram, isSigner: false, isWritable: false},
+      			{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
+      			{pubkey: mint, isSigner: false, isWritable: true},
+      			{pubkey: destination, isSigner: false, isWritable: true},
+      			{pubkey: globalKey, isSigner: true, isWritable: true},
+    		],
+		programId: programID,
+		data: new Uint8Array([]),
+	  });
+
+  	  betTrans.add(instruction);
         }
         else if(stake < originalStake){
-          //partial match
+          	//partial match
+		var toBePartiallyMatched = new solanaWeb3.PublicKey(acc);
+  		var seed = "a" + Math.random() * 1000000000000;
+	        var newAcc = await solanaWeb3.PublicKey.createWithSeed(globalKey, seed, programID); 
+  
+	        var trans = new solanaWeb3.Transaction().add(
+		        solanaWeb3.SystemProgram.createAccountWithSeed({
+			        fromPubkey: globalKey,
+			        basePubkey: globalKey,
+			        seed: seed,
+			        newAccountPubkey: newAcc,
+			        lamports: rentExemptVal,
+			        space: 73,
+			        programId: programID,
+		        })
+	        );
+          
+          	var betData = new Uint8Array([ha, id1, id2, stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          	const instruction = new solanaWeb3.TransactionInstruction({
+		        keys: [
+              			{pubkey: newAcc, isSigner: false, isWritable: true},
+	          	    	{pubkey: tokenProgram, isSigner: false, isWritable: false},
+        	      		{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
+              	      		{pubkey: mint, isSigner: false, isWritable: true},
+              	      		{pubkey: destination, isSigner: false, isWritable: true},
+              			{pubkey: globalKey, isSigner: true, isWritable: true},
+           		],
+  	      		programId: programID,
+		        data: betData,
+          	});
+          	trans.add(instruction);
+          	betTrans.add(trans);
+  		var toBeFullyMatched = newAcc;
+  		var partialInstruction = new solanaWeb3.TransactionInstruction({
+			keys: [
+      				{pubkey: toBePartiallyMatched, isSigner: false, isWritable: true},
+      				{pubkey: toBeFullyMatched, isSigner: false, isWritable: true},
+    			],
+			programId: programID,
+			data: new Uint8Array([]),
+		});
+  		betTrans.add(partialInstruction);
         }
         else if(stake > originalStake){
           //overmatch
+		var startedBetAcc = new solanaWeb3.PublicKey(acc);
+  	  	var instruction = new solanaWeb3.TransactionInstruction({
+			keys: [
+      				{pubkey: startedBetAcc, isSigner: false, isWritable: true},
+      				{pubkey: tokenProgram, isSigner: false, isWritable: false},
+      				{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
+      				{pubkey: mint, isSigner: false, isWritable: true},
+      				{pubkey: destination, isSigner: false, isWritable: true},
+      				{pubkey: globalKey, isSigner: true, isWritable: true},
+    			],
+			programId: programID,
+			data: new Uint8Array([]),
+	  	});
+	  	betTrans.add(instruction);
+		
+		var newStake = (stake - originalStake) * 100;
+    		var newOppositeStake = newStake * (odds - 1);
+		var newStake256squared = Math.floor(stake / (256 * 256)); 
+        	newStake = newStake - newStake256squared * 256 * 256;
+        	var newStake256 = Math.floor(newStake / 256);
+        	var newStake1s = newStake  - newStake256 * 256;
+  
+        	var newOppStake256squared = Math.floor(newOppositeStake / (256 * 256));
+        	newOppositeStake = newOppositeStake - newOppStake256squared * 256 * 256;
+        	var newOppStake256 = Math.floor(newOppositeStake / 256);
+        	var newOppStake1s = newOppositeStake - newOppStake256 * 256;
+		
+		var seed = "a" + Math.random() * 1000000000000;
+	        var newAcc = await solanaWeb3.PublicKey.createWithSeed(globalKey, seed, programID); 
+  
+	        var trans = new solanaWeb3.Transaction().add(
+		        solanaWeb3.SystemProgram.createAccountWithSeed({
+			        fromPubkey: globalKey,
+			        basePubkey: globalKey,
+			        seed: seed,
+			        newAccountPubkey: newAcc,
+			        lamports: rentExemptVal,
+			        space: 73,
+			        programId: programID,
+		        })
+	        );
+          
+          	var betData = new Uint8Array([ha, id1, id2, newStake256squared, newStake256, newStake1s, newOppStake256squared, newOppStake256, newOppStake1s]);
+          	var instruction = new solanaWeb3.TransactionInstruction({
+		        keys: [
+              			{pubkey: newAcc, isSigner: false, isWritable: true},
+              			{pubkey: tokenProgram, isSigner: false, isWritable: false},
+              			{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
+              			{pubkey: mint, isSigner: false, isWritable: true},
+              			{pubkey: destination, isSigner: false, isWritable: true},
+              			{pubkey: globalKey, isSigner: true, isWritable: true},
+           		],
+  	      		programId: programID,
+		        data: betData,
+          	});
+          	trans.add(instruction);
+          	betTrans.add(trans);
         }
       }
       
       betTrans.recentBlockhash = blockhashObj.blockhash;
       betTrans.feePayer = globalKey;
-      
+      /*
       const json = JSON.stringify(finalArr);
       const res = await axios.post(
         `https://usdcbetplacer.mbdqwfss.repl.co?id1=0&id2=${betData[0]}&ha=${betData[1]}&bettor=${walletAdd}`,
@@ -209,7 +322,8 @@ const BetSlip = ({
         resultHex = resultHex.substring(2, resultHex.length);
       }
       var transaction = solanaWeb3.Transaction.from(result);
-      let signed = await window.solana.signTransaction(transaction);
+      */
+      let signed = await window.solana.signTransaction(betTrans);
       let signature = await connection.sendRawTransaction(signed.serialize());
       console.log(signature);
       setBetSlipOpen(false);
