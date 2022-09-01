@@ -34,7 +34,7 @@ const About = () => {
         issues or questions.
       </p>
       <p className="sans about-body">
-        Note: Phantom Wallet is unable to provide an accurate simulation of SOL and USDC balance changes before you click Approve. This is due to an update they made 2 weeks ago, and is entirely their fault, not ours. 
+        Note: Phantom Wallet is unable to provide an accurate simulation of SOL and USDC balance changes before you click Approve. This is due to an update that they made, and they have not fixed this issue.  This issue is entirely their fault, not ours. Your Devnet USDC wagers will still go through. 
       </p>
       <h3 className="serif-600 sect-title a-sect-title">
         Sports betting exchanges 101.
