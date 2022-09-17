@@ -194,8 +194,8 @@ const BetSlip = ({
   	  betTrans.add(instruction);
         }
         else if(stake < originalStake){
-		console.log("partial match running");
           	//partial match
+		console.log("Partial match running");
 		var toBePartiallyMatched = new solanaWeb3.PublicKey(acc);
   		var seed = "a" + Math.random() * 1000000000000;
 	        var newAcc = await solanaWeb3.PublicKey.createWithSeed(globalKey, seed, programID); 
@@ -212,9 +212,11 @@ const BetSlip = ({
 		        })
 	        );
           
-          	var wesBetData = new Uint8Array([betData[1], 0, betData[0], stake256squared, stake256, stake1s, oppStake256squared, oppStake256, oppStake1s]);
+          	var wesBetData = new Uint8Array([betData[1], stake256squared, stake256, stake1s]);
+		console.log("ha: " + wesBetData[0] + "\nstake256squared: " + wesBetData[1] + "\nstake256: " + wesBetData[2] + "\nstake1s: " + wesBetData[3]);
           	const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
+				{pubkey: toBePartiallyMatched, isSigner: false, isWritable: true},
               			{pubkey: newAcc, isSigner: false, isWritable: true},
 	          	    	{pubkey: tokenProgram, isSigner: false, isWritable: false},
         	      		{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
@@ -227,16 +229,6 @@ const BetSlip = ({
           	});
           	trans.add(instruction);
           	betTrans.add(trans);
-  		var toBeFullyMatched = newAcc;
-  		var partialInstruction = new solanaWeb3.TransactionInstruction({
-			keys: [
-      				{pubkey: toBePartiallyMatched, isSigner: false, isWritable: true},
-      				{pubkey: toBeFullyMatched, isSigner: false, isWritable: true},
-    			],
-			programId: programID,
-			data: new Uint8Array([]),
-		});
-  		betTrans.add(partialInstruction);
         }
         else if(stake > originalStake){
           //overmatch
