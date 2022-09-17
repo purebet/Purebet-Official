@@ -9,6 +9,10 @@ var connection = new solanaWeb3.Connection(
   "https://devnet.genesysgo.net/",
   "confirmed"
 );
+var programID = new solanaWeb3.PublicKey("M8WYXm9YGPcBqt8QpAMgZXbMFjVXeTyMrQ94pAtkitK");
+var mint = new solanaWeb3.PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
+var tokenProgram = new solanaWeb3.PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
+var destination = new solanaWeb3.PublicKey("nx7KU638KQbJ49X2Kjbck3PsyhoyGYLhRKrQdVnxHYW");
 
 const BetSlip = ({
   betData,
@@ -73,6 +77,8 @@ const BetSlip = ({
         changedStakeCopy -= stakeTemp;
       }
       console.log(finalArr);
+      
+      
       var globalKey = new solanaWeb3.PublicKey(walletAdd);
       var rentExemptVal = await connection.getMinimumBalanceForRentExemption(73);
       var userUSDCAssocTokAddr = await connection.getTokenAccountsByOwner(globalKey, {mint: mint});
@@ -398,7 +404,7 @@ const BetSlip = ({
           <br />
           <br />
           <label htmlFor="total-field" className="serif-400">
-            This Returns
+            This Will Return
           </label>
           <br />
           <input
