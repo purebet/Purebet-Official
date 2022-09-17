@@ -409,7 +409,7 @@ const BetSlip = ({
           <br />
           <br />
           <button type="submit" className="cta-btn sans" onClick={placeBets}>
-            Place Bet
+            Place a Bet
           </button>
         </form>
       </div>
