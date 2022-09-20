@@ -229,7 +229,7 @@ const Exchange = () => {
         <span>Purebet.</span>
       </div>
       <div className="betting-events-wrapper">
-        <h3 className="serif-600 sect-title">Popular Events.</h3>
+        <h3 className="serif-600 sect-title">Popular Events </h3>
         <div className="bet-events">
           <!-- there used to be a .slice(0, 4) after avaiOdds, but I took it out because for the time being we won't have more than 5 events. -->
           {avaiOdds.map((item, index) => {
