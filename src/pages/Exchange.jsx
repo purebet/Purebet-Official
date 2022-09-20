@@ -34,6 +34,7 @@ const Exchange = () => {
       //can be accessed like this initJSON[variable that is the string form of 256 * id1 + id2]
       //https://stackoverflow.com/questions/4255472/javascript-object-access-variable-property-by-name-as-string
       //but for now keep the format the same, using the original array. because it might not be worth changing the format if the entire site is going to be revamped
+      //there used to be a .slice(0, 4) after avaiOdds, but I took it out because for the time being we won't have more than 5 events
       var initJSON = [{
                       "event": "Purebet to be ready on October 20th", 
                       "homeTeam": "Yes", 
@@ -232,7 +233,7 @@ const Exchange = () => {
       <div className="betting-events-wrapper">
         <h3 className="serif-600 sect-title">Popular Events </h3>
         <div className="bet-events">
-          <!-- there used to be a .slice(0, 4) after avaiOdds, but I took it out because for the time being we won't have more than 5 events. -->
+          
           {avaiOdds.map((item, index) => {
             return (
               <AvailableBets
