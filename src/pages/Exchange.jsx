@@ -32,6 +32,7 @@ const Exchange = () => {
       //like this
       //{"123": {event homeTeam awayTeam....}
       //can be accessed like this initJSON[variable that is the string form of 256 * id1 + id2]
+      //https://stackoverflow.com/questions/4255472/javascript-object-access-variable-property-by-name-as-string
       //but for now keep the format the same, using the original array. because it might not be worth changing the format if the entire site is going to be revamped
       var initJSON = [{
                       "event": "Purebet to be ready on October 20th", 
