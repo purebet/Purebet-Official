@@ -130,7 +130,7 @@ const Exchange = () => {
         {filters:
           [
             {memcmp: {offset: 38, bytes: all0s.toBase58()} },
-            {DataSizeFilter: {dataSize: 71} }
+            {dataSize: 71} 
           ]
         },
         {dataSlice: {length: 6, offset:0} }
