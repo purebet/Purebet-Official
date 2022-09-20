@@ -54,7 +54,7 @@ const Exchange = () => {
         {filters:
           [
             {memcmp: {offset: 6, bytes: all0s.toBase58()} },
-            {DataSizeFilter: {dataSize: 71} }
+            {dataSize: 71} 
           ]
         },
         {dataSlice: {length: 6, offset:0} }
@@ -231,7 +231,7 @@ const Exchange = () => {
       <div className="betting-events-wrapper">
         <h3 className="serif-600 sect-title">Popular Events.</h3>
         <div className="bet-events">
-          //there used to be a .slice(0, 4) after avaiOdds, but I took it out because for the time being we won't have more than 5 events.
+          <!-- there used to be a .slice(0, 4) after avaiOdds, but I took it out because for the time being we won't have more than 5 events. -->
           {avaiOdds.map((item, index) => {
             return (
               <AvailableBets
