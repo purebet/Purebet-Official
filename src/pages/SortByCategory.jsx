@@ -90,17 +90,17 @@ const SortByCategory = () => {
         if(toMatchOdds == highest.odds){
           highest.accArr.push({amount: toMatchStake, acc: homeAccs[x].pubkey.toString()});
           highest.totalAmount += toMatchStake;
-          highest.totalAmount = round(highest.totalAmount, 2);
+          highest.totalAmount = Math.round(highest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds == secondHighest.odds){
           secondHighest.accArr.push({amount: toMatchStake, acc: homeAccs[x].pubkey.toString()});
           secondHighest.totalAmount += toMatchStake;
-          secondHighest.totalAmount = round(secondHighest.totalAmount, 2);
+          secondHighest.totalAmount = Math.round(secondHighest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds == thirdHighest.odds){
           thirdHighest.accArr.push({amount: toMatchStake, acc: homeAccs[x].pubkey.toString()});
           thirdHighest.totalAmount += toMatchStake;
-          thirdHighest.totalAmount = round(thirdHighest.totalAmount, 2);
+          thirdHighest.totalAmount = Math.round(thirdHighest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds > highest.odds){
           thirdHighest.odds = secondHighest.odds;
@@ -166,17 +166,17 @@ const SortByCategory = () => {
         if(toMatchOdds == highest.odds){
           highest.accArr.push({amount: toMatchStake, acc: awayAccs[x].pubkey.toString()});
           highest.totalAmount += toMatchStake;
-          highest.totalAmount = round(highest.totalAmount, 2);
+          highest.totalAmount = Math.round(highest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds == secondHighest.odds){
           secondHighest.accArr.push({amount: toMatchStake, acc: awayAccs[x].pubkey.toString()});
           secondHighest.totalAmount += toMatchStake;
-          secondHighest.totalAmount = round(secondHighest.totalAmount, 2);
+          secondHighest.totalAmount = Math.round(secondHighest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds == thirdHighest.odds){
           thirdHighest.accArr.push({amount: toMatchStake, acc: awayAccs[x].pubkey.toString()});
           thirdHighest.totalAmount += toMatchStake;
-          thirdHighest.totalAmount = round(thirdHighest.totalAmount, 2);
+          thirdHighest.totalAmount = Math.round(thirdHighest.totalAmount * 100) / 100;
         }
         else if(toMatchOdds > highest.odds){
           thirdHighest.odds = secondHighest.odds;
