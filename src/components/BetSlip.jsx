@@ -228,13 +228,13 @@ const BetSlip = ({
           	var wesBetData = new Uint8Array([betData[1], stake256, stake1s]);
           	const instruction = new solanaWeb3.TransactionInstruction({
 		        keys: [
-				{pubkey: toBePartiallyMatched, isSigner: false, isWritable: true},
               			{pubkey: newAcc, isSigner: false, isWritable: true},
 	          	    	{pubkey: tokenProgram, isSigner: false, isWritable: false},
         	      		{pubkey: userUSDCAssocTokAddr.value[0].pubkey, isSigner: false, isWritable: true},
               	      		{pubkey: mint, isSigner: false, isWritable: true},
               	      		{pubkey: destination, isSigner: false, isWritable: true},
               			{pubkey: globalKey, isSigner: true, isWritable: true},
+				{pubkey: toBePartiallyMatched, isSigner: false, isWritable: true},
            		],
   	      		programId: programID,
 		        data: wesBetData,
