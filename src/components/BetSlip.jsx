@@ -9,10 +9,10 @@ var connection = new solanaWeb3.Connection(
   "https://devnet.genesysgo.net/",
   "confirmed"
 );
-var programID = new solanaWeb3.PublicKey("M8WYXm9YGPcBqt8QpAMgZXbMFjVXeTyMrQ94pAtkitK");
+var programID = new solanaWeb3.PublicKey("GwgT1MhdMMC2ZH2oZrSM2iTMWbq9aGnVzLDJW9i1VMSL");
 var mint = new solanaWeb3.PublicKey("Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr");
 var tokenProgram = new solanaWeb3.PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA");
-var destination = new solanaWeb3.PublicKey("nx7KU638KQbJ49X2Kjbck3PsyhoyGYLhRKrQdVnxHYW");
+var destination = new solanaWeb3.PublicKey("3vzF1qCnwXh1t2iKPZobuY6qRtCoiv5vfgzkPiyiK7Qi");
 
 const BetSlip = ({
   betData,
