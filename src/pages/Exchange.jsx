@@ -57,9 +57,9 @@ const Exchange = () => {
           [
             {memcmp: {offset: 6, bytes: all0s.toBase58()} },
             {dataSize: 71} 
-          ]
-        },
-        {dataSlice: {length: 6, offset:0} }
+          ],
+          dataSlice: {length: 6, offset:0} 
+        }
       );
       
       for(var x = 0; x < homeAccs.length; x++){
