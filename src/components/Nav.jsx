@@ -25,11 +25,11 @@ const Nav = ({ setWalletAdd }) => {
             Pending Bets
           </Link>
           <a
-            href="https://purecrash.mbdqwfss.repl.co/"
+            href="https://purebet.medium.com/"
             target="_blank"
             className="sans nav-ele"
           >
-            Casino Game
+            Blog
           </a>
           <WalletBtn setWalletAdd={setWalletAdd} />
         </div>
