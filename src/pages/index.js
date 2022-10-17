@@ -31,11 +31,11 @@ const index = () => {
         </div>
         <div className="btn-container">
           <a
-            href="https://purecrash.mbdqwfss.repl.co/"
+            href="https://purebet.medium.com/"
             target="_blank"
             className="trans-btn sans"
           >
-            Casino Game.
+            Blog.
           </a>
           <Link to="/Exchange" className="cta-btn sans">
             Launch Exchange.
