@@ -25,7 +25,7 @@ const Exchange = () => {
   const avaiBets = async () => {
     try {
       var connection = new solanaWeb3.Connection("https://devnet.genesysgo.net/", "confirmed");
-      var programID = new solanaWeb3.PublicKey("GwgT1MhdMMC2ZH2oZrSM2iTMWbq9aGnVzLDJW9i1VMSL");
+      var programID = new solanaWeb3.PublicKey("5WiqUxXHhvFEGSTzFsdK8GuZUjVF6aq7RPLiDBQH65d1");
       var all0s = new solanaWeb3.PublicKey(new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
       //later this variable will be populated from the database
       //each id1 * 256 + id2 will have its event linked with it
