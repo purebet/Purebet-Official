@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Nunito:wght@300;400;500;600;800&display=swap');
 
 @font-face {
     font-family: "Cabinet Grotesk 800";
@@ -46,7 +47,16 @@ body{
     font-size: 4ch;
     color: #EDF2F4;
 }
-
+.h-font{
+    font-family: "Michroma";
+    font-size: 17ch;
+    color: #EDF2F4;
+}
+.b-font{
+    font-family: "Nunito";
+    font-size: 4ch;
+    color: #EDF2F4;
+}
 .logo{
     margin: 3.25em 0em;
 }
@@ -63,15 +73,14 @@ body{
 .hero-logo-wrapper{
     position: relative;
     left: 50%;
+    transform: translateX(-50%);
     width: fit-content;
     margin: 6.25em 0em;
 }
 .hero-logo{
-    font-size: 20ch;
     width: fit-content;
 }
 .tagline{
-    font-size: 3ch;
     font-weight: 400;
 }
 .btn-container{
@@ -79,23 +88,15 @@ body{
     justify-content: center;
     gap: 10em;
 }
-.cta-btn, .trans-btn{
-    padding: .5em 2em;
-    
-    text-decoration: none;
-    cursor: pointer;
-}
 .cta-btn{
-    background: linear-gradient(92.63deg, #009DB2 0%, #F28705 100%);
-    box-shadow: 10px 10px 15px rgba(242, 135, 5,  0.35);
-    border: 4px solid #009DB2;
+    background: #9EF4F9;
+    border-radius: 10px;
+    font-size: 3ch;
+    line-height: 4ch;
+    color: #1A1D1D;
+    padding: 0rem 1rem;
+    text-decoration: none;
 }
-.trans-btn{
-    border: 4px solid #009DB2;
-    filter: drop-shadow(10px 10px 15px #F28705);
-    background-color: transparent;
-}
-
 .social-text{
     text-align: center;
     margin-bottom: 6.25em;
@@ -113,6 +114,40 @@ body{
 }
 
 //Exchange
+.high-card{
+    border: 2px solid;
+    padding: 2em 1em;
+}
+
+.high-card .eve-dt p{
+    font-size: 1.5ch;
+    text-align: center;
+}
+.card-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+.row1, .row2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+.total{
+    text-align: center;
+}
+.long-row-eves .long-eve{
+    display: flex;
+    gap: 3em;
+    border: 2px solid;
+    padding: .5em 2em;
+}
+.long-odds{
+    display: flex;
+    gap: 1em;
+}
 
 .ex-hero-text{
     position: relative;
