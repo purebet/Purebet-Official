@@ -34,13 +34,6 @@ const index = () => {
           </h4>
         </div>
         <div className="btn-container">
-          <a
-            href="https://purebet.medium.com/"
-            target="_blank"
-            className="trans-btn sans"
-          >
-            Blog.
-          </a>
           <Link to="/Exchange" className="cta-btn sans">
             Launch Exchange.
           </Link>
