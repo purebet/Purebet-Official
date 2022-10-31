@@ -22,16 +22,19 @@ const About = () => {
         To use this devnet demo.
       </h3>
       <p className="sans about-body">
-        Switch your Phantom wallet to devent by clicking the cog in the bottom
+        Switch your Phantom wallet to devnet by clicking the cog in the bottom
         right, and selecting Change Network then Devnet. Go to{" "}
-        <a href="http://solfaucet.com"> Sol Faucet </a> to get up to 2 devnet
+        <a href="http://solfaucet.com"  target = "_blank"> Sol Faucet </a> to get up to 2 devnet
         SOL. Go to devnet{" "}
-        <a href="https://spl-token-faucet.com/?token-name=USDC">USDC faucet</a>{" "}
+        <a href="https://spl-token-faucet.com/?token-name=USDC"  target = "_blank">USDC faucet</a>{" "}
         to obtain up to 1000 devnet USDC. Go to our exchange to bet on an
         upcoming sporting event or our casino to test your classic Crash
         strategies before we go to mainnet. Contact us in{" "}
-        <a href="https://discord.gg/22tr2FYAh9">Discord</a> if you have any
+        <a href="https://discord.gg/22tr2FYAh9"  target = "_blank">Discord</a> if you have any
         issues or questions.
+      </p>
+      <p className="sans about-body">
+        Note: Phantom Wallet is unable to provide an accurate simulation of SOL and USDC balance changes before you click Approve. This is due to an update that they made, and they have not fixed this issue.  This issue is entirely their fault, not ours. Your Devnet USDC wagers will still go through. 
       </p>
       <h3 className="serif-600 sect-title a-sect-title">
         Sports betting exchanges 101.
@@ -67,7 +70,7 @@ const About = () => {
         you began playing, but because of the cryptography of the sha-256
         algorithm, you can never find the next one until it is revealed to you.
         It is explained well in this video:
-        https://www.youtube.com/watch?v=F1HA7e3acSI
+        <a href = "https://www.youtube.com/watch?v=F1HA7e3acSI"  target = "_blank"> https://www.youtube.com/watch?v=F1HA7e3acSI </a>
       </p>
     </div>
   );
