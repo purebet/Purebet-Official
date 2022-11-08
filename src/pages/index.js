@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import axios from "axios";
 import Nav from "../components/Nav";
 import "./index.scss";
-import bgImg from "../images/Ellipse.png";
+import bgGroup from "../images/bg-img.png";
 import AvailableBets from "../components/AvailableBets";
 import Categories from "../components/Categories";
 import { Link } from "gatsby";
@@ -25,7 +25,7 @@ const index = () => {
         />
       </Helmet>
       <Nav />
-      <img src={bgImg} className="bg-img"></img>
+      <img src={bgGroup} className="bg-img"></img>
       <div className="landing-page">
         <div className="hero-logo-wrapper">
           <h1 className="hero-logo h-font">Purebet.</h1>

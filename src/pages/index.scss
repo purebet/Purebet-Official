@@ -1,21 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Nunito:wght@300;400;500;600;800&display=swap');
-
-@font-face {
-    font-family: "Cabinet Grotesk 800";
-    src: url(../assets/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Extrabold.otf);
-}
-@font-face {
-    font-family: "Cabinet Grotesk 600";
-    src: url(../assets/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Bold.otf);
-}
-@font-face {
-    font-family: "Cabinet Grotesk 400";
-    src: url(../assets/CabinetGrotesk_Complete/Fonts/OTF/CabinetGrotesk-Regular.otf);
-}
-@font-face {
-    font-family: "Black Pro";
-    src: url(../assets/black-pro-reguler.otf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Michroma&display=swap');
 
 *, body{
     box-sizing: border-box;
@@ -24,7 +7,7 @@
     scroll-behavior: smooth;
 }
 body{
-    background: linear-gradient(104.46deg, #012E40 0%, #1C342E 45.83%, #A75C00 100%);
+    background-color: #101010;
     min-height: 100vh;
 }
 .serif-400, .serif-600, .serif-800{
@@ -34,17 +17,9 @@ body{
     font-family: "Cabinet Grotesk 800";
     font-size: 8ch;
 }
-.serif-600{
-    font-family: "Cabinet Grotesk 600";
-    font-size: 5ch;
-}
-.serif-400{
-    font-family: "Cabinet Grotesk 400";
+.p-font{
+    font-family: 'Lato', sans-serif;
     font-size: 3ch;
-}
-.sans{
-    font-family: "Black Pro";
-    font-size: 4ch;
     color: #EDF2F4;
 }
 .h-font{
@@ -53,18 +28,17 @@ body{
     color: #EDF2F4;
 }
 .b-font{
-    font-family: "Nunito";
-    font-size: 4ch;
+    font-family: "Lato";
+    font-size: 2.5ch;
     color: #EDF2F4;
+
 }
 .logo{
     margin: 3.25em 0em;
 }
 .bg-img{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: -10%;
     z-index: -10;
 }
 .landing-page{
@@ -94,7 +68,7 @@ body{
     font-size: 3ch;
     line-height: 4ch;
     color: #1A1D1D;
-    padding: 0rem 1rem;
+    padding: 0rem 1.5rem;
     text-decoration: none;
 }
 .social-text{
@@ -114,6 +88,9 @@ body{
 }
 
 //Exchange
+.exchange-inner-section{
+    display: flex;
+}
 .high-card{
     border: 2px solid;
     padding: 2em 1em;

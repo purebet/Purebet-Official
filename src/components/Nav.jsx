@@ -14,22 +14,22 @@ const Nav = ({ setWalletAdd }) => {
           ></StaticImage>
         </Link>
         <div className="right-nav">
-          <Link to="/Exchange" className="sans nav-ele">
+          <Link to="/Exchange" className="b-font nav-ele">
             Home
           </Link>
-          <Link to="/SortByCategory" className="sans nav-ele">
+          <Link to="/SortByCategory" className="b-font nav-ele">
             Events
           </Link>
-          <Link to="/About" className="sans nav-ele">
+          <Link to="/About" className="b-font nav-ele">
             About
           </Link>
-          <Link to="/PendingBets" className="sans nav-ele">
+          <Link to="/PendingBets" className="b-font nav-ele">
             Pending Bets
           </Link>
           <a
             href="https://purebet.medium.com/"
             target="_blank"
-            className="sans nav-ele"
+            className="b-font nav-ele"
           >
             Blog
           </a>
