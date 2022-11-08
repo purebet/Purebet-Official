@@ -58,9 +58,7 @@ const SortByCategory = ({ location }) => {
       <div className="exchange-inner-section">
         <Categories setCat={setCat} setCatId={setCatId} />
         <div className="betting-events-wrapper">
-          <h3 className="p-font sect-title">
-            Explore {location.state.sport} Events.
-          </h3>
+          <h3 className="p-font sect-title">Explore Events.</h3>
           <div className="long-row-eves b-font">
             {apiRes[cat]?.map((item) => {
               return (
